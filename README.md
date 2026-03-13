@@ -5,6 +5,7 @@ an attempt at a self-contained platform-independent template for gmod addons
 ## requirements
 - [`steamcmd`](https://developer.valvesoftware.com/wiki/SteamCMD)
 - [`just`](https://github.com/casey/just)
+- [`wine`](https://winehq.org/)
 
 ## getting started
 download the repo in whatever way you prefer. cloning it looks like this:
