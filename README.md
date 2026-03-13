@@ -35,3 +35,13 @@ this will download the windows depot of gmod with the SDK tools
 (`studiomdl`, `vtex`, etc.) to
 `$HOME/.steam/steamcmd/linux32/steamapps/content/app_4000/depot_4002/`.
 then copy the contents to `./tools/`. same commands are run by `just setup`
+
+## compiling
+run `just` or `just build`
+
+the final addon will be located in `out/`. do whatever you want from here.
+
+## file structure
+`addon/` should use the same structure as actual addons with a few differences:
+- supported "raw" files (`.qc` (and everything they depend on) and `.tga`) are
+  compiled automatically
