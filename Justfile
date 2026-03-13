@@ -1,6 +1,7 @@
 DEPOT_TARGET_FOLDER := ".steam/steamcmd/linux32/steamapps/content/app_4000/depot_4002/"
 TOOLS_PATH := absolute_path("tools/")
 GAME_PATH := absolute_path("game/garrysmod")
+LOG_COLOR := "\\e[1;38;2;30;30;46;48;2;203;166;247m"
 
 setup steam_login steam_password:
     @echo "{{ style('command') }}downloading sdk tools...{{ NORMAL }}"
@@ -9,7 +10,7 @@ setup steam_login steam_password:
     cp {{ join(home_directory(), DEPOT_TARGET_FOLDER) }} {{ TOOLS_PATH }} -r
 
 prepare-textures:
-    @echo "{{ style('command') }}preparing textures...{{ NORMAL }}"
+    @echo -e "{{ LOG_COLOR }}preparing textures...{{ NORMAL }}"
 
     mkdir -p temp
 
@@ -23,7 +24,7 @@ prepare-textures:
     done
 
 prepare-models:
-    @echo "{{ style('command') }}preparing models...{{ NORMAL }}"
+    @echo -e "{{ LOG_COLOR }}preparing models...{{ NORMAL }}"
 
     mkdir -p temp
 
