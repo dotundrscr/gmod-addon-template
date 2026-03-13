@@ -3,6 +3,8 @@ TOOLS_PATH := absolute_path("tools/")
 GAME_PATH := absolute_path("game/garrysmod")
 LOG_COLOR := "\\e[1;38;2;30;30;46;48;2;203;166;247m"
 
+build: prepare-textures prepare-models
+
 setup steam_login steam_password:
     @echo "{{ style('command') }}downloading sdk tools...{{ NORMAL }}"
 
@@ -36,5 +38,3 @@ prepare-models:
     for qcModel in $(find qc -name "*.qc"); do \
         cp $qcModel temp/$(basename $qcModel); \
     done
-
-build: prepare-textures prepare-models
