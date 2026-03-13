@@ -6,7 +6,7 @@ LOG_COLOR := "\\e[1;38;2;30;30;46;48;2;203;166;247m"
 build: prepare-textures prepare-models
 
 setup steam_login steam_password:
-    @echo "{{ style('command') }}downloading sdk tools...{{ NORMAL }}"
+    @echo -e "{{ LOG_COLOR }}downloading sdk tools...{{ NORMAL }}"
 
     steamcmd +login {{ steam_login }} {{ steam_password }} +download_depot 4000 4002 +quit
     cp {{ join(home_directory(), DEPOT_TARGET_FOLDER) }} {{ TOOLS_PATH }} -r
