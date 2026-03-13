@@ -5,7 +5,7 @@ STEP_LOG_COLOR := "\\e[1;38;2;30;30;46;48;2;203;166;247m"
 ITEM_LOG_COLOR := "\\e[1;38;2;30;30;46;48;2;137;180;250m"
 DONE_LOG_COLOR := "\\e[1;38;2;30;30;46;48;2;166;227;161m"
 
-build: prepare-textures prepare-models
+build: copy prepare-textures
     @echo -e "{{ DONE_LOG_COLOR }}finished building the addon{{ NORMAL }}"
 
 setup steam_login steam_password:
@@ -16,38 +16,30 @@ setup steam_login steam_password:
 
     @echo -e "{{ DONE_LOG_COLOR }}finished downloading{{ NORMAL }}"
 
-prepare-textures:
-    @echo -e "{{ STEP_LOG_COLOR }}preparing textures...{{ NORMAL }}"
+copy:
+    @echo -e "{{ STEP_LOG_COLOR }}copying assets...{{ NORMAL }}"
 
     mkdir -p temp
+    cp -r addon/* temp
 
-    for texture in $(find assets -name "*.tga"); do \
-        echo -e "{{ ITEM_LOG_COLOR }}compiling $texture...{{ NORMAL }}" && \
-        {{ join(TOOLS_PATH, "bin/vtex.exe") }} -nopause -game {{ GAME_PATH }} -outdir "temp/$(dirname $texture | sed 's|^assets/||')" $texture; \
-    done
+    @echo -e "{{ DONE_LOG_COLOR }}finished copying assets{{ NORMAL }}"
 
-    for material in $(find assets -name "*.vmt"); do \
-        echo -e "{{ ITEM_LOG_COLOR }}copying $material...{{ NORMAL }}" && \
-        mkdir -p temp/$(dirname $material | sed 's|^assets/||') && \
-        cp $material temp/$(dirname $material | sed 's|^assets/||'); \
-    done
-
-    @echo -e "{{ DONE_LOG_COLOR }}finished preparing textures{{ NORMAL }}"
-
-prepare-models:
-    @echo -e "{{ STEP_LOG_COLOR }}preparing models...{{ NORMAL }}"
-
-    mkdir -p temp
-
-    for model in $(find assets -name "*.smd"); do \
-        echo -e "{{ ITEM_LOG_COLOR }}copying $model...{{ NORMAL }}" && \
-        mkdir -p temp/$(dirname $model | sed 's|^assets/||') && \
-        cp $model temp/$(dirname $model | sed 's|^assets/||'); \
-    done
+    @echo -e "{{ STEP_LOG_COLOR }}copying models scripts...{{ NORMAL }}"
 
     for qcModel in $(find qc -name "*.qc"); do \
         echo -e "{{ ITEM_LOG_COLOR }}copying $qcModel...{{ NORMAL }}" && \
         cp $qcModel temp/$(basename $qcModel); \
     done
 
-    @echo -e "{{ DONE_LOG_COLOR }}finished preparing models{{ NORMAL }}"
+    @echo -e "{{ DONE_LOG_COLOR }}finished copying model scripts{{ NORMAL }}"
+
+prepare-textures:
+    @echo -e "{{ STEP_LOG_COLOR }}preparing textures...{{ NORMAL }}"
+
+    for texture in $(find temp -name "*.tga"); do \
+        echo -e "{{ ITEM_LOG_COLOR }}compiling $texture...{{ NORMAL }}" && \
+        {{ join(TOOLS_PATH, "bin/vtex.exe") }} -nopause -game {{ GAME_PATH }} -outdir $(dirname $texture) $texture && \
+        rm $texture; \
+    done
+
+    @echo -e "{{ DONE_LOG_COLOR }}finished preparing textures{{ NORMAL }}"
