@@ -14,6 +14,7 @@ git clone https://git.braindead.cc/dot/gmod-addon-template --recursive
 
 > [!NOTE]
 > *what is `--recursive`?* 
+>
 > `--recursive` pulls all submodules provided by the repo. this is required
 > because [`github:Facepunch/garrysmod`](https://github.com/Facepunch/garrysmod)
 > submodule provides the `gameinfo.txt` required by most of the SDK tools.
