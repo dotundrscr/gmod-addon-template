@@ -11,6 +11,29 @@ setup steam_login steam_password:
 prepare-textures:
     @echo "{{ style('command') }}preparing textures...{{ NORMAL }}"
 
+    mkdir -p temp
+
     for texture in $(find assets -name "*.tga"); do \
-        {{ join(TOOLS_PATH, "bin/vtex.exe") }} -nopause -game {{ GAME_PATH }} -outdir "temp/$(dirname $texture)" $texture; \
+        {{ join(TOOLS_PATH, "bin/vtex.exe") }} -nopause -game {{ GAME_PATH }} -outdir "temp/$(dirname $texture | sed 's|^assets/||')" $texture; \
     done
+
+    for material in $(find assets -name "*.vmt"); do \
+        mkdir -p temp/$(dirname $material | sed 's|^assets/||') && \
+        cp $material temp/$(dirname $material | sed 's|^assets/||'); \
+    done
+
+prepare-models:
+    @echo "{{ style('command') }}preparing models...{{ NORMAL }}"
+
+    mkdir -p temp
+
+    for model in $(find assets -name "*.smd"); do \
+        mkdir -p temp/$(dirname $model | sed 's|^assets/||') && \
+        cp $model temp/$(dirname $model | sed 's|^assets/||'); \
+    done
+
+    for qcModel in $(find qc -name "*.qc"); do \
+        cp $qcModel temp/$(basename $qcModel); \
+    done
+
+build: prepare-textures prepare-models
