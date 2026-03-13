@@ -2,6 +2,8 @@
 
 an attempt at a self-contained platform-independent template for gmod addons
 
+***wip!***
+
 ## requirements
 - [`steamcmd`](https://developer.valvesoftware.com/wiki/SteamCMD)
 - [`just`](https://github.com/casey/just)
