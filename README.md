@@ -3,6 +3,12 @@
 an attempt at a self-contained platform-independent template for gmod addons
 
 > [!NOTE]
+> the [github:dotundrscr/gmod-template-addon](https://github.com/dotundrscr/gmod-template-addon) repository is a mirror.
+>
+> the repository is hosted on [git.braindead.cc](https://git.braindead.cc/dot/gmod-template-addon). i will sometimes read github
+> issues, but **not** PRs. please file them against that repo.
+
+> [!NOTE]
 > don't expect really good support for windows right now.
 >
 > i daily drive cachyos and sometimes use windows for specific reasons
