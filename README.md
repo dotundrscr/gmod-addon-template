@@ -2,6 +2,14 @@
 
 an attempt at a self-contained platform-independent template for gmod addons
 
+> [!NOTE]
+> don't expect really good support for windows right now.
+>
+> i daily drive cachyos and sometimes use windows for specific reasons
+> (ie: stress level zero's marrow sdk works better on windows)
+>
+> for now, use wsl.
+
 ***wip!***
 
 ## requirements
