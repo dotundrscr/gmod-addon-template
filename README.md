@@ -3,9 +3,9 @@
 an attempt at a self-contained platform-independent template for gmod addons
 
 > [!NOTE]
-> the [github:dotundrscr/gmod-template-addon](https://github.com/dotundrscr/gmod-template-addon) repository is a mirror.
+> the [github:dotundrscr/gmod-addon-template](https://github.com/dotundrscr/gmod-addon-template) repository is a mirror.
 >
-> the repository is hosted on [git.braindead.cc](https://git.braindead.cc/dot/gmod-template-addon). i will sometimes read github
+> the repository is hosted on [git.braindead.cc](https://git.braindead.cc/dot/gmod-addon-template). i will sometimes read github
 > issues, but **not** PRs. please file them against that repo.
 
 > [!NOTE]
