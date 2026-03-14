@@ -28,6 +28,9 @@ download the repo in whatever way you prefer. cloning it looks like this:
 ```bash
 git clone https://git.braindead.cc/dot/gmod-addon-template --recursive
 ```
+if you created a separate repo with the `Use this template` button, replace
+`https://git.braindead.cc/dot/gmod-addon-template` with the link to your own
+repository (ie: `https://git.braindead.cc/cool-gmod-addon-dev/my-epic-addon`)
 
 > [!NOTE]
 > *what is `--recursive`?* 
